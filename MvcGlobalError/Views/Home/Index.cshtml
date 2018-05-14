@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "首页";
+}
+@section style{
+<style>
+    #container a {
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        padding: 10px 10px;
+    }
+</style>
+}
+<div id="container">
+    <a href="/Home/404" target="_blank">测试404</a>
+
+    <a href="/Home/ControllerError" target="_blank">测试页面500错误</a>
+
+    <a href="javascript:void(0)" id="test_interface">测试接口500错误</a>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/plugins/layer/layer.min.js"></script>
+    <script src="~/Scripts/Public.js"></script>
+    <script>
+        $(function () {
+            $("#test_interface").on("click", function () {
+                $.ajax({
+                    type: "get",
+                    url: "/api/apitest/5",
+                    success: function (data) {
+
+                    }
+                });
+            });
+        });
+    </script>
+}
